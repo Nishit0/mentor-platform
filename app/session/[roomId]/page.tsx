@@ -197,20 +197,20 @@ export default function SessionPage() {
   }
 
   return (
-    <main className="h-screen overflow-hidden bg-[#07111f] px-5 py-5 text-slate-100">
-      <div className="mx-auto flex h-full w-full max-w-[1600px] flex-col gap-3">
-        <header className="mx-auto flex w-full max-w-[1180px] shrink-0 items-center justify-between gap-5 rounded-[1.5rem] border border-slate-800 bg-[#0d1728]/95 px-5 py-3 shadow-[0_18px_50px_rgba(0,0,0,0.24)]">
+    <main className="h-screen overflow-hidden bg-[#07111f] px-3 py-3 text-slate-100">
+      <div className="mx-auto flex h-full w-full max-w-[1760px] flex-col gap-2">
+        <header className="flex w-full shrink-0 items-center justify-between gap-4 rounded-[1.3rem] border border-slate-800 bg-[#0d1728]/95 px-4 py-2 shadow-[0_18px_50px_rgba(0,0,0,0.24)]">
           <div className="min-w-0">
             <div className="flex items-center gap-3">
-              <h1 className="truncate text-xl font-semibold text-slate-50">Room {roomId}</h1>
-              <span className="rounded-full border border-slate-700 bg-slate-900/80 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-slate-300">
+              <h1 className="truncate text-base font-semibold text-slate-50">Room {roomId}</h1>
+              <span className="rounded-full border border-slate-700 bg-slate-900/80 px-2.5 py-0.5 text-[10px] uppercase tracking-[0.18em] text-slate-300">
                 {role}
               </span>
             </div>
-            <p className="mt-1 text-sm text-slate-400">{displayName}</p>
-            <div className="mt-3 flex flex-wrap gap-2">
+            <p className="mt-0.5 text-xs text-slate-400">{displayName}</p>
+            <div className="mt-1.5 flex flex-wrap gap-1.5">
               {participants.map((participant) => (
-                <div key={participant.id} className="rounded-full border border-slate-700 bg-slate-900/70 px-3 py-1 text-xs text-slate-200">
+                <div key={participant.id} className="rounded-full border border-slate-700 bg-slate-900/70 px-2.5 py-0.5 text-[10px] text-slate-200">
                   {participant.name}
                 </div>
               ))}
@@ -220,13 +220,13 @@ export default function SessionPage() {
           <div className="flex shrink-0 items-center gap-2">
             {role === "mentor" ? (
               <>
-                <button onClick={handleCopyInvite} className="rounded-xl border border-slate-700 bg-slate-100 px-4 py-2.5 text-sm font-medium text-slate-950 transition hover:bg-white">
+                <button onClick={handleCopyInvite} className="rounded-lg border border-slate-700 bg-slate-100 px-3.5 py-1.5 text-xs font-medium text-slate-950 transition hover:bg-white">
                   {copied ? "Invite copied" : "Copy invite link"}
                 </button>
                 <button
                   onClick={handleEndSession}
                   disabled={endingSession}
-                  className="rounded-xl border border-red-500/30 bg-red-950/40 px-4 py-2.5 text-sm font-medium text-red-200 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="rounded-lg border border-red-500/30 bg-red-950/40 px-3.5 py-1.5 text-xs font-medium text-red-200 disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {endingSession ? "Ending..." : "End session"}
                 </button>
@@ -235,7 +235,7 @@ export default function SessionPage() {
               <button
                 onClick={handleLeaveSession}
                 disabled={leavingSession}
-                className="rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-2.5 text-sm font-medium text-slate-100 disabled:cursor-not-allowed disabled:opacity-60"
+                className="rounded-lg border border-slate-700 bg-slate-900/80 px-3.5 py-1.5 text-xs font-medium text-slate-100 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {leavingSession ? "Leaving..." : "Leave session"}
               </button>
@@ -243,14 +243,14 @@ export default function SessionPage() {
           </div>
         </header>
 
-        <section className="grid min-h-0 flex-1 grid-cols-[minmax(0,1.42fr)_minmax(330px,0.58fr)] grid-rows-[minmax(0,1fr)_18.25rem] gap-3">
-          <div className="min-h-0 overflow-hidden rounded-[1.5rem] border border-slate-800 bg-[#0d1728]/88 p-1 shadow-[0_12px_32px_rgba(0,0,0,0.2)]">
+        <section className="grid min-h-0 flex-1 grid-cols-[minmax(0,1.66fr)_minmax(320px,0.44fr)] grid-rows-[minmax(0,1fr)_auto] gap-2">
+          <div className="min-h-0 overflow-hidden rounded-[1.3rem] border border-slate-800 bg-[#0d1728]/88 p-1 shadow-[0_12px_32px_rgba(0,0,0,0.2)]">
             <CodeEditor roomId={roomId} />
           </div>
-          <div className="min-h-0 overflow-hidden rounded-[1.5rem] border border-slate-800 bg-[#0d1728]/88 p-1 shadow-[0_12px_32px_rgba(0,0,0,0.2)]">
+          <div className="row-span-2 min-h-0 overflow-hidden rounded-[1.3rem] border border-slate-800 bg-[#0d1728]/88 p-1 shadow-[0_12px_32px_rgba(0,0,0,0.2)]">
             <ChatBox roomId={roomId} userName={displayName} userRole={role ?? "student"} />
           </div>
-          <div className="col-span-2 min-h-0 overflow-hidden rounded-[1.5rem] border border-slate-800 bg-[#0d1728]/88 p-1 shadow-[0_12px_32px_rgba(0,0,0,0.2)]">
+          <div className="min-h-0 overflow-hidden rounded-[1.3rem] border border-slate-800 bg-[#0d1728]/88 p-1 shadow-[0_12px_32px_rgba(0,0,0,0.2)]">
             <VideoCall roomId={roomId} />
           </div>
         </section>

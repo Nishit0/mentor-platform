@@ -280,37 +280,39 @@ export default function VideoCall({ roomId }: { roomId: string }) {
   };
 
   return (
-    <section className="flex h-full min-h-0 flex-col overflow-hidden rounded-[1.45rem] border border-slate-800 bg-[#091221] shadow-xl">
-      <div className="flex items-center justify-between gap-3 border-b border-slate-800 px-3 py-2">
-        <div className="min-w-0">
-          <h2 className="text-sm font-medium text-slate-100">Call</h2>
-          <p className="mt-0.5 text-[11px] text-slate-400">{connectionStatus}</p>
-        </div>
-        <div className="flex items-center gap-2">
-          <button onClick={toggleAudio} className="rounded-full border border-slate-700 bg-slate-900 px-2.5 py-1 text-[11px] text-slate-100 transition hover:border-slate-500">
-            {isAudioEnabled ? "Mic off" : "Mic on"}
-          </button>
-          <button onClick={toggleVideo} className="rounded-full border border-slate-700 bg-slate-900 px-2.5 py-1 text-[11px] text-slate-100 transition hover:border-slate-500">
-            {isVideoEnabled ? "Camera off" : "Camera on"}
-          </button>
-        </div>
-      </div>
-
-      {error ? <p className="px-3 pt-2 text-xs text-rose-300">{error}</p> : null}
-
-      <div className="grid min-h-0 gap-3 p-3 lg:grid-cols-2">
-        <div className="min-h-0 overflow-hidden rounded-[1.25rem] border border-slate-800 bg-black/80">
-          <div className="border-b border-slate-800 px-3 py-2 text-xs text-slate-400">You</div>
-          <div className="flex aspect-video items-center justify-center bg-black">
-            <video ref={localVideoRef} autoPlay muted playsInline className="h-full w-full object-contain" />
+    <section className="flex h-full min-h-0 flex-col overflow-hidden rounded-[1.25rem] border border-slate-800 bg-[#091221] shadow-xl">
+      <div className="grid shrink-0 grid-cols-[minmax(150px,0.95fr)_minmax(0,2.2fr)] items-start gap-3 border-b border-slate-800 px-2.5 py-1.5">
+        <div className="min-w-0 space-y-2">
+          <div>
+            <p className="text-[11px] font-medium text-slate-100">Call</p>
+            <p className="mt-0.5 text-[9px] text-slate-400">{connectionStatus}</p>
+            {error ? <p className="mt-1 text-[9px] text-rose-300">{error}</p> : null}
+          </div>
+          <div className="flex flex-wrap gap-1.5">
+            <button onClick={toggleAudio} className="rounded-full border border-slate-700 bg-slate-900 px-2 py-0.5 text-[9px] text-slate-100 transition hover:border-slate-500">
+              {isAudioEnabled ? "Mic off" : "Mic on"}
+            </button>
+            <button onClick={toggleVideo} className="rounded-full border border-slate-700 bg-slate-900 px-2 py-0.5 text-[9px] text-slate-100 transition hover:border-slate-500">
+              {isVideoEnabled ? "Camera off" : "Camera on"}
+            </button>
           </div>
         </div>
-        <div className="min-h-0 overflow-hidden rounded-[1.25rem] border border-slate-800 bg-black/80">
-          <div className="border-b border-slate-800 px-3 py-2 text-xs text-slate-400">Participant</div>
-          <div className="flex aspect-video items-center justify-center bg-black">
-            <video ref={remoteVideoRef} autoPlay playsInline className="h-full w-full object-contain" />
+
+        <div className="grid min-h-0 w-full max-w-[46rem] grid-cols-2 gap-2 justify-self-center">
+          <div className="min-h-0 overflow-hidden rounded-[1rem] border border-slate-800 bg-black/80">
+            <div className="border-b border-slate-800 px-2.5 py-1 text-[10px] text-slate-400">You</div>
+            <div className="flex aspect-video items-center justify-center bg-black">
+              <video ref={localVideoRef} autoPlay muted playsInline className="h-full w-full object-contain" />
+            </div>
+          </div>
+          <div className="min-h-0 overflow-hidden rounded-[1rem] border border-slate-800 bg-black/80">
+            <div className="border-b border-slate-800 px-2.5 py-1 text-[10px] text-slate-400">Participant</div>
+            <div className="flex aspect-video items-center justify-center bg-black">
+              <video ref={remoteVideoRef} autoPlay playsInline className="h-full w-full object-contain" />
+            </div>
           </div>
         </div>
+
       </div>
     </section>
   );

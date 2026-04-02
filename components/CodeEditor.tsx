@@ -143,15 +143,15 @@ export default function CodeEditor({ roomId }: { roomId: string }) {
   };
 
   return (
-    <section className="flex h-full min-h-0 flex-col overflow-hidden rounded-[1.45rem] border border-slate-800 bg-[#091221] shadow-xl">
-      <div className="flex flex-col gap-2 border-b border-slate-800 px-3 py-2 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm font-medium text-slate-100">Editor</p>
-        <label className="flex items-center gap-2 text-xs text-slate-400">
+    <section className="flex h-full min-h-0 flex-col overflow-hidden rounded-[1.25rem] border border-slate-800 bg-[#091221] shadow-xl">
+      <div className="flex flex-col gap-2 border-b border-slate-800 px-2.5 py-1.5 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-xs font-medium text-slate-100">Editor</p>
+        <label className="flex items-center gap-2 text-[11px] text-slate-400">
           <span>Language</span>
           <select
             value={language}
             onChange={(event) => handleLanguageChange(event.target.value as "javascript" | "python")}
-            className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-slate-100 outline-none transition focus:border-slate-500"
+            className="rounded-lg border border-slate-700 bg-slate-900 px-2.5 py-1 text-[11px] text-slate-100 outline-none transition focus:border-slate-500"
           >
             <option className="bg-slate-900 text-slate-100" value="javascript">JavaScript</option>
             <option className="bg-slate-900 text-slate-100" value="python">Python</option>
@@ -181,7 +181,7 @@ export default function CodeEditor({ roomId }: { roomId: string }) {
           theme="vs-dark"
           options={{
             minimap: { enabled: false },
-            fontSize: 13,
+            fontSize: 12,
             padding: { top: 10 },
             smoothScrolling: true,
           }}
